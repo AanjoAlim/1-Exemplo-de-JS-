@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textContent</title>
+</head>
+
+<body>
+
+    <input type="text" id="campo">
+    <p id="saida"></p>
+
+    <script>
+        var bloco = document.createElement("div")
+        bloco.textContent = "Texto original"
+        document.body.appendChild(bloco)
+        bloco.textContent = "Texto alterado"
+       
+        document.body.appendChild("campo").addEventListener("input", function(){
+            document.getElementById("saida").textContent = "Voce digitou: "+ this.value
+
+        })
+         
+        var apagar = document.createElement("h1")
+        apagar.textContent = "texto será removido"
+        document.body.appendChild(apagar)
+        //apagar.textContent = ""
+
+    </script>
+
+</body>
+
+</html>

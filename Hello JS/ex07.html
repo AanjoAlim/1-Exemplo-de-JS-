@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList.add</title>
+</head>
+<style>
+    .destaque{
+        color: blueviolet;
+        background-color: black;
+        padding: 20px;
+    }
+    .borda{
+        border: 3px double rgb(0, 89, 255);
+    }
+    .fundo{
+        background-color: rgb(185, 16, 16);
+        color: rgb(0, 0, 0);
+    }
+
+    .realce{
+        background-color: black;
+    }
+</style>
+<body>
+
+    <button id="botao">Clique aqui</button>
+    <p id="mensagem">texto simples</p>
+    <script>
+        var div = document.createElement("div")
+        div.textContent = "Olá com estilo"
+        div.classList.add("destaque")
+        document.body.appendChild(div)
+
+
+        var paragrafo = document.createElement("p")
+        paragrafo.textContent =  " Texto com bordas e fundo"
+        paragrafo.classList.add("borda", "fundo")
+        document.body.appendChild(paragrafo)
+
+        document.getElementById("botao").addEventListener("click", function(){ document.getElementById("mensagem").classList.add("realce") })
+
+
+
+
+
+    </script>
+</body>
+</html>
