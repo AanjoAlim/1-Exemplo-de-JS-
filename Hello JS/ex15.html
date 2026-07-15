@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>classList.toggle</title>
+
+    <style>
+        .oculto {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <button id="menuBtn">menu</button>
+
+    <button id="menuBtn">Menu</button>
+
     <nav id="menu" class="oculto">
         <ul>
             <li>Home</li>
@@ -14,5 +22,15 @@
             <li>Contato</li>
         </ul>
     </nav>
+
+    <script>
+        var botaoMenu = document.getElementById("menuBtn");
+        var menu = document.getElementById("menu");
+
+        botaoMenu.addEventListener("click", function () {
+            menu.classList.toggle("oculto");
+        });
+    </script>
+
 </body>
 </html>
