@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo bomba</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        background-color: black;
+        color: white;
+    }
+
+    h1 {
+        margin-top: 20px;
+    }
+
+    #grade {
+        width: 320px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        border: 2px solid rgb(255, 255, 255);
+    }
+
+    #mensagem {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    #novoJogo {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 20px;
+
+    }
+
+    .casa {
+        height: 60px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        background-color: rgb(76, 18, 18);
+        color: rgb(255, 255, 255);
+    }
+</style>
+
+<body>
+    <h1> jogo da B💣MBA!!! </h1>
+    <p>Clique nas casa, mas cidado com as Bombas!</p>
+    <div id="grade"></div> <!--botão criados pelo JS-->
+    <p id="mensagem"></p><!--as mensagens aparecerão-->
+    <button id="novojogo">Novo jogo</button>
+
+    <script>
+        var bombas = []
+        var grade = document.getElementById("grade")
+        var mensagem = document.getElementById("mensagem")
+        var novoJogo = document.getElementById("novoJogo")
+
+
+        novoJogo.addEventListener("click", iniciarjogo)
+        function iniciarjogo() {
+            grade.innerHTML = ""
+            mensagem.innerHTML = ""
+
+            bombas = gerarBombas() //lembrete  bolinha vermelha
+            for (var i = 0; i < 16; i++) {
+
+                var botão = document.createElement("button")
+                botão.classList.add("casa")
+                botão.dataset.posicao = i
+                botão.addEventListener("click", clicarCasa)
+                grade.appendChild(botão)
+
+            }
+        }
+        function gerarBombas() {
+            var posicoes = []
+            while (posicoes.length < 4){
+                var numero = Math.floor(Math.random() * 16)
+                if (!posicoes.includes(numero)) {
+                    posicoes.push(numero)
+
+                }
+            }
+            return posicoes
+        }
+        function clicarCasa(evento){
+            var botao = evento.target
+            var posicao = Number(botao.dataset.posicao)
+            if(bombas.includes(posicao)){
+                botao.classList.add("bomba")
+                botao.innerHTML = "💣"
+                mensagem.innerHTML = " 💥BOOM!💥 Você perdeu"
+                revelarBombas()
+                desativarjogo()
+
+            }else{
+                botao.classList.add("seguro")
+                botao.innerText = "✅"
+                botao.disabled = true
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
